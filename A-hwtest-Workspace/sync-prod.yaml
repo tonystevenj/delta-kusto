@@ -1,0 +1,11 @@
+jobs:
+  sync-Playground:
+    target:
+        adx:
+            clusterUri:  https://padata.westus3.kusto.windows.net/
+            database:  Playground
+    action:
+        filePath:  ../clusters/padata.westus3/Playground.kql
+tokenProvider:
+    azCli:
+      interactive: false

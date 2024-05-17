@@ -1,0 +1,358 @@
+//  Create tables
+
+.create-merge table Adl_Dev_public_row_PowerApps_Reporting_ActiveMonthlyBrowserNameOSTypeCounts_Overall (['activeUserDate']:datetime, ['dimension']:string, ['dimensionValue']:string, Region:string, ['userCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table Adl_Dev_public_row_PowerApps_Reporting_ActiveMonthlyTenantBrowserNameOSTypeCounts_Overall (['activeUserDate']:datetime, TenantID:string, ['dimension']:string, ['dimensionValue']:string, Region:string, ['userCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table Advisor_ActionsSummary (ReportDate:datetime, ClientType:string, ActionType:string, MAU_Actions:long, MAU_Tenants_With_Actions:long, MAU_Admins_With_Actions:long, MAU_Sesiions_With_Actions:long, MAU_Actions_Success:long, MAU_Tenants_With_Actions_Success:long, MAU_Admins_With_Actions_Success:long, MAU_Sessions_With_Actions_Success:long, WAU_Actions:long, WAU_Tenants_With_Actions:long, WAU_Admins_With_Actions:long, WAU_Sesiions_With_Actions:long, WAU_Actions_Success:long, WAU_Tenants_With_Actions_Success:long, WAU_Admins_With_Actions_Success:long, WAU_Sessions_With_Actions_Success:long, DAU_Actions:long, DAU_Tenants_With_Actions:long, DAU_Admins_With_Actions:long, DAU_Sesiions_With_Actions:long, DAU_Actions_Success:long, DAU_Tenants_With_Actions_Success:long, DAU_Admins_With_Actions_Success:long, DAU_Sessions_With_Actions_Success:long, MAU_Unique_Apps:long, MAU_Unique_Environments:long, MAU_Sessions_With_Actions:long, MAU_Unique_Apps_Success:long, MAU_Unique_Environments_Success:long, WAU_Unique_Apps:long, WAU_Unique_Environments:long, WAU_Sessions_With_Actions:long, WAU_Unique_Apps_Success:long, WAU_Unique_Environments_Success:long, DAU_Unique_Apps:long, DAU_Unique_Environments:long, DAU_Sessions_With_Actions:long, DAU_Unique_Apps_Success:long, DAU_Unique_Environments_Success:long) with (folder="", docstring="") 
+
+
+.create-merge table Advisor_Actions_MockData (['id']:int, ['actionsCol']:string, ClientType:string, Scenario:string, Action:string, ActionResult:string, Status:string, Failed:bool, UnknownCol:string) with (folder="", docstring="Created based on Advisor_Actions_MockData") 
+
+
+.create-merge table Advisor_Actions_MockData_v1 (['id']:int, ['actionsCol']:string, ClientType:string, Scenario:string, Action:string, ActionResult:string, Status:string, Failed:bool, UnknownCol:string) with (folder="", docstring="Created based on Advisor_Actions_MockData_v1") 
+
+
+.create-merge table Advisor_DailyEvents_Counts (ReportDate:datetime, StreamName:string, EventCount:long) with (folder="", docstring="") 
+
+
+.create-merge table Advisor_DailyEvents_Datewise_Summary_Counts (ReportDate:datetime, ActivityName:string, RowCount:long) with (folder="", docstring="Created based on Advisor_DailyEvents_Datewise_Summary_Counts") 
+
+
+.create-merge table Advisor_DailyEvents_Summary (EventDate:datetime, ActivityName:string, ActivityCount:long) with (folder="", docstring="") 
+
+
+.create-merge table Advisor_DailyEvents_Summary_Counts (ActivityName:string, RowCount:long) with (folder="", docstring="Created based on Advisor_DailyEvents_Summary_Counts") 
+
+
+.create-merge table Advisor_DailyStreams_Activity_Counts (StreamName:string, ['activityName']:string, ActivityCount:long) with (folder="", docstring="Created based on Advisor_DailyStreams_Activity_Counts") 
+
+
+.create-merge table Advisor_DailyStreams_Counts (StreamName:string, RowCounts:long) with (folder="", docstring="Created based on Advisor_DailyStreams_Counts") 
+
+
+.create-merge table Advisor_DateWise_Counts (ReportDate:datetime, StreamName:string, RowCounts:long) with (folder="", docstring="Created based on Advisor_DateWise_Counts") 
+
+
+.create-merge table Advisor_OverallSummary (ReportDate:datetime, Daily_ActiveTenants:long, Daily_ActiveAdmins:long, Daily_ActiveSessions:long, Daily_ActionsPerSession:long, Weekly_ActiveTenants:long, Weekly_ActiveAdmins:long, Weekly_ActiveSessions:long, Weekly_ActionsPerSession:long, Monthly_ActiveTenants:long, Monthly_ActiveAdmins:long, Monthly_ActiveSessions:long, Monthly_ActionsPerSession:long) with (folder="", docstring="") 
+
+
+.create-merge table Advisor_OverallSummary_v1 (ReportDate:datetime, Daily_ActiveTenants:long, Daily_ActiveUsers:long, Daily_ActiveAdmins:long, Daily_ActiveSessions:long, Daily_Actions:long, Daily_ActionsPerSession:real, Weekly_ActiveTenants:long, Weekly_ActiveUsers:long, Weekly_ActiveAdmins:long, Weekly_ActiveSessions:long, Weekly_Actions:long, Weekly_ActionsPerSession:real, Monthly_ActiveTenants:long, Monthly_ActiveUsers:long, Monthly_ActiveAdmins:long, Monthly_ActiveSessions:long, Monthly_Actions:long, Monthly_ActionsPerSession:real, Daily_Actions_Success:long, Weekly_Actions_Success:long, Monthly_Actions_Success:long, Daily_ActionsPerSession_Success:real, Weekly_ActionsPerSession_Success:real, Monthly_ActionsPerSession_Success:real) with (folder="", docstring="") 
+
+
+.create-merge table Advisor_RawEvent_Counts (FeedDate:datetime, EventDate:string, ActivityName:string, RowCounts:long) with (folder="", docstring="Created based on Advisor_RawEvent_Counts") 
+
+
+.create-merge table Advisor_RecommendationResources_MockData (['id']:int, ['resourceCol']:string, ClientType:string, Scenario:string, Environments:int, ManagedEnvironments:int, IsTenantAdmin:bool, Failed:bool, ResourceCount:int, FormattedEnvironments:int) with (folder="", docstring="") 
+
+
+.create-merge table Advisor_RecommendationResources_MockData_v1 (['id']:int, ['resourceCol']:string, ClientType:string, Scenario:string, Environments:string, ManagedEnvironments:string, IsTenantAdmin:bool, Failed:bool, ResourceCount:int, FormattedEnvironments:string) with (folder="", docstring="Created based on Advisor_RecommendationResources_MockData_v1") 
+
+
+.create-merge table Advisor_Recommendations_MockData (['id']:int, ['recoCol']:string, ClientType:string, Environments:int, ManagedEnvironments:int, Recommendations:int, FailureCount:int, IsTenantAdmin:bool, Failed:bool, FormattedEnvironments:int) with (folder="", docstring="") 
+
+
+.create-merge table Advisor_Recommendations_MockData_v1 (['id']:int, ['recoCol']:string, ClientType:string, Environments:string, ManagedEnvironments:string, Recommendations:string, FailureCount:string, IsTenantAdmin:bool, Failed:bool, FormattedEnvironments:string) with (folder="", docstring="Created based on Advisor_Recommendations_MockData_v1") 
+
+
+.create-merge table Advisor_TestFilters (ActivityCount:long, FormattingType:string, Activity:string) with (folder="", docstring="Created based on Advisor_TestFilters") 
+
+
+.create-merge table Dev_Test_PowerApps_Reporting_ActiveDailyTenantAppCounts_Stage (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['applicationId']:string, ['userCount']:long, ['isProductionApp']:bool) with (folder="", docstring="") 
+
+
+.create-merge table Dev_Test_PowerApps_Reporting_ActiveDailyTenantAppPersonaCounts_Stage (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['applicationId']:string, ['eventPersona']:string, ['personaCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table Dev_Test_PowerApps_Reporting_ActiveDailyTenantCounts_Stage (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['userCount']:long, ['applicationCount']:long, ['productionAppCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table Dev_Test_PowerApps_Reporting_ActiveDailyTenantPersonaCounts_Stage (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['eventPersona']:string, ['personaCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table Dev_Test_PowerApps_Reporting_OverallActiveDailyTenantPersonaCounts_Stage (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['eventPersona']:string, ['personaCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table MAC_PACC_Growth_ROW_Stream (['dau']:long, ['wau']:long, ['mau']:long, Filter:string, GeoBrowserOS:string, Date:string, UserType:string, Region:string, Environment:string) with (folder="", docstring="") 
+
+
+.create-merge table ME_MonthlyTenantAppsUsersCount (['activeUserDate']:string, TenantID:string, ['usesrCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table PAT_ActiveUsageByApp (['ts']:datetime, ['dau']:long, ['wau']:long, ['mau']:long, ['dat']:long, ['wat']:long, ['mat']:long, ['eventName']:string, Persona:string, SubPersona:string, ['package']:string, ['services']:string, ['appId']:string, ['tenantId']:string, ['appType']:string, ['appDataSource']:string, ['totalMAU']:int, ['totalSessionsMAU']:int) with (folder="", docstring="") 
+
+
+.create-merge table PAT_ActiveUsageByAppSummary (['ts']:datetime, ['dau']:long, ['wau']:long, ['mau']:long, ['dat']:long, ['wat']:long, ['mat']:long, ['totalMAU']:long, ['totalSessionsMAU']:long, ['eventName']:string, Persona:string, SubPersona:string, ['package']:string, ['services']:string, ['appType']:string, ['appDataSource']:string) with (folder="", docstring="") 
+
+
+.create-merge table PAT_ActiveUsageByTenant (['ts']:datetime, ['dau']:long, ['wau']:long, ['mau']:long, ['dat']:long, ['wat']:long, ['mat']:long, Persona:string, SubPersona:string, ['tenantId']:string) with (folder="", docstring="") 
+
+
+.create-merge table PAT_ActiveUsageByTenantSummary (['ts']:datetime, ['dau']:long, ['wau']:long, ['mau']:long, ['dat']:long, ['wat']:long, ['mat']:long, Persona:string, SubPersona:string) with (folder="", docstring="") 
+
+
+.create-merge table PAT_ActiveUsageV2 (['ts']:datetime, ['dau']:long, ['wau']:long, ['mau']:long, ['dat']:long, ['wat']:long, ['mat']:long, ['eventName']:string, Persona:string, SubPersona:string, ['retentionClass']:string) with (folder="", docstring="") 
+
+
+.create-merge table SapErpLogs_wRFCName (TIMESTAMP:datetime, Tenant:string, Result:string, ['operationName']:string, ['connectorType']:string, ['message']:string, ['operationCount']:long, ['avg_durationInMilliseconds']:real) with (folder="", docstring="") 
+
+
+.create-merge table SapErpOperationLogsTest (TIMESTAMP:datetime, Tenant:string, Result:string, ['operationName']:string, ['connectorType']:string, ['contentLength']:long, ['durationInMilliseconds']:long, ['httpStatusCode']:long, ['exceptionMessage']:string, ['errorCode']:string, ['failureCause']:string, ['errorMessage']:string, ['clientRequestId']:string) with (folder="", docstring="") 
+
+
+.create-merge table SapErpOperationLogsTestwRFCName (TIMESTAMP:datetime, Tenant:string, Result:string, ['operationName']:string, ['connectorType']:string, ['message']:string, ['clientRequestId']:string, ['count_']:long, ['avg_durationInMilliseconds']:real) with (folder="", docstring="") 
+
+
+.create-merge table SapErpOperationLogsTestwRFCName2 (TIMESTAMP:datetime, Tenant:string, Result:string, ['operationName']:string, ['connectorType']:string, ['message']:string, ['count_']:long, ['avg_durationInMilliseconds']:real) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_EngSys_Entity_Inventory'] (['Manifest Key']:guid, ['Service OID']:guid, ['Entity Category']:string, URI:string, ['Entity Full Name']:string, ['In-scope']:string, Schema:dynamic, Export:string, Delete:string, ExportAgent:string, DeleteAgent:string, Cloud:string, Inactive:bool) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_PA_OneBranch_Migration'] (ServiceOwner:string, SignedTo:string, ETA:string, Status:string, Notes:string, ['dueDate']:datetime, ServiceTree:string, PipelineType:string, PipelineName:string, Url:string) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_PA_POC'] (ServiceOwner:string, ServiceTree:string, PipelineCount:long, POC:string, ['In V-Team chat']:string, ['Service Status']:string, Note:string) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_PowerApps_3p_apps'] (Role:string, PrincipalType:string, PrincipalDisplayName:string, PrincipalObjectId:guid, PrincipalFQN:string, Notes:string, RoleAssignmentIdentifier:guid, ['splitID']:dynamic, AppID:guid, TenantID:guid) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_PowerApps_AppIDs'] (Role:string, PrincipalType:string, PrincipalDisplayName:string, PrincipalObjectId:guid, PrincipalFQN:string, Notes:string, RoleAssignmentIdentifier:guid, ['splitID']:dynamic, AppID:guid, TenantID:guid) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_PowerApps_Gov_AAD_Apps'] (Role:string, PrincipalType:string, PrincipalDisplayName:string, PrincipalObjectId:guid, PrincipalFQN:string, Notes:string, RoleAssignmentIdentifier:string, ['splitID']:dynamic, AppID:guid, TenantID:guid) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_PowerApps_Internal'] (Role:string, PrincipalType:string, PrincipalDisplayName:string, PrincipalObjectId:guid, PrincipalFQN:string, Notes:string, RoleAssignmentIdentifier:guid, ['splitID']:dynamic, AppID:guid, TenantID:guid) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_adf_sink'] (['opetaton_Name']:string, EventInfo_Time:datetime, ['sum_count_objectId']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_cds_principals'] (['aadapp']:string, ['tenantid']:guid, ['accessMode']:string, ['icmTeam']:string, ['distributionList']:string, ['description']:string, ['environmentNames']:string, ['serviceName']:string, ['serviceTreeId']:guid, ['infraName']:string) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_cluster_users'] (['email']:string) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_fdf_sink'] (['opetaton_Name']:string, EventInfo_Time:datetime, ['sum_count_objectId']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_sheet02'] (ServiceOwner:string, SignedTo:string, ETA:string, Status:string, Notes:string, ['dueDate']:datetime, ServiceTree:string, PipelineType:string, PipelineName:string, Url:string) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_sheet03'] (ServiceOwner:string, SignedTo:string, ETA:string, Status:string, Notes:string, ['myExceptionStatus']:string, ['dueDate']:datetime, ServiceTree:string, PipelineType:string, PipelineName:string, Url:string) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_sheet_02_21'] (ServiceOwner:string, SignedTo:string, ETA:string, Status:string, Notes:string, ['myExceptionStatus']:string, ['dueDate']:datetime, ServiceTree:string, PipelineType:string, PipelineName:string, Url:string) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_sheet_02_23'] (ServiceOwner:string, SignedTo:string, ETA:string, Status:string, Notes:string, ['myExceptionStatus']:string, ['dueDate']:datetime, ServiceTree:string, PipelineType:string, PipelineName:string, Url:string) with (folder="", docstring="") 
+
+
+.create-merge table ['hwtest_sheet_02_26'] (ServiceOwner:string, SignedTo:string, ETA:string, Status:string, Notes:string, ['myExceptionStatus']:string, ['dueDate']:datetime, ServiceTree:string, PipelineType:string, PipelineName:string, Url:string) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_ComponentUsage'] (TimeStamp:datetime, AppsWithEnhancedComponent:long, AppsWithComponentLibrary:long, TotalComponentDefinitionCount:long, TotalComponentInstanceCount:long, TotalDataPropertyCount:long, TotalFunctionPropertyCount:long, TotalEventPropertyCount:long, TotalActionPropertyCount:long, TotalApps:long, AppsWithOnlyComponentDefinition:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_ImportComponentLibraryPercentile'] (TimeStamp:datetime, ['percentile_durationMs_99']:real, ['percentile_durationMs_95']:real, ['percentile_durationMs_70']:real, ['percentile_durationMs_50']:real, ['percentile_durationMs_40']:real, ['percentile_durationMs_30']:real, ['percentile_durationMs_5']:real, ['sessionCount']:long, ['distinctSessionCount']:long, Location:string) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_LicenseRequest_PACData'] (Date:datetime, Environment:string, Region:string, TenantID:string, EventName:string, UserCount:long, ActivityCount:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_LicenseRequests_AggregatedData'] (Date:datetime, Environment:string, Region:string, TenantID:string, DataSource:string, EventName:string, UserCount:long, ActivityCount:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_LicenseRequests_Kusto'] (['data_tenantId']:string, ['data_puid']:string, ['data_eventName']:string, ['data_activityId']:string) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_LicenseRequests_PPUXData'] (Date:datetime, Environment:string, Region:string, TenantID:string, DataSource:string, EventName:string, UserCount:long, ActivityCount:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_NamedFormulaUsage'] (TimeStamp:datetime, EnabledSessionCount:long, DisabledSessionCount:long, AuthoringAppCount:long, PublishedAppCount:long, GreaterThan100NamedFormulas:long, GreaterThan70NamedFormulas:long, GreaterThan40NamedFormulas:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_ParseJSONFunctionUsage'] (Timestamp:datetime, TotalAppsWithParseJSON:long, TotalTenantsWithParseJSON:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_ParseJSONUsage'] (TimeStamp:datetime, UniqueApps:long, Organizations:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_Persons'] (PersonID:int, LastName:string, FirstName:string, Age:int) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantAppCounts'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['applicationId']:string, ['userCount']:long, ['isProductionApp']:bool) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantAppCounts_Stage'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['applicationId']:string, ['userCount']:long, ['isProductionApp']:bool) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantAppPersonaCounts'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['applicationId']:string, ['eventPersona']:string, ['personaCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantAppPersonaCounts_Stage'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['applicationId']:string, ['eventPersona']:string, ['personaCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantCounts'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['userCount']:long, ['applicationCount']:long, ['productionAppCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantCounts_Stage'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['userCount']:long, ['applicationCount']:long, ['productionAppCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantCounts_Stage_V1'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['userCount']:long, ['applicationCount']:long, ['productionAppCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantCounts_Stage_V2'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['userCount']:long, ['applicationCount']:long, ['productionAppCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantPersonaCounts'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['eventPersona']:string, ['personaCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantPersonaCounts_Stage'] (['activeUserDate']:datetime, TenantID:string, TenantCountryCode:string, ['eventPersona']:string, ['personaCount']:long) with (folder="", docstring="") 
+
+
+.create-merge table ['tmp_copy_UpdateComponentLibraryPercentile'] (TimeStamp:datetime, Location:string, ['sessionCount']:long, ['distinctSessionCount']:long, ['percentile_durationMs_99']:real, ['percentile_durationMs_95']:real, ['percentile_durationMs_70']:real, ['percentile_durationMs_50']:real, ['percentile_durationMs_40']:real, ['percentile_durationMs_30']:real, ['percentile_durationMs_5']:real) with (folder="", docstring="") 
+
+
+//  Create table ingestion mappings
+
+.create-or-alter table ['hwtest_EngSys_Entity_Inventory'] ingestion csv mapping "hwtest_EngSys_Entity_Inventory_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"Manifest Key","datatype":""},{"Properties":{"Ordinal":"1"},"column":"Service OID","datatype":""},{"Properties":{"Ordinal":"2"},"column":"Entity Category","datatype":""},{"Properties":{"Ordinal":"3"},"column":"URI","datatype":""},{"Properties":{"Ordinal":"4"},"column":"Entity Full Name","datatype":""},{"Properties":{"Ordinal":"5"},"column":"In-scope","datatype":""},{"Properties":{"Ordinal":"6"},"column":"Schema","datatype":""},{"Properties":{"Ordinal":"7"},"column":"Export","datatype":""},{"Properties":{"Ordinal":"8"},"column":"Delete","datatype":""},{"Properties":{"Ordinal":"9"},"column":"ExportAgent","datatype":""},{"Properties":{"Ordinal":"10"},"column":"DeleteAgent","datatype":""},{"Properties":{"Ordinal":"11"},"column":"Cloud","datatype":""},{"Properties":{"Ordinal":"12"},"column":"Inactive","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_PA_OneBranch_Migration'] ingestion csv mapping "hwtest_PA_OneBranch_Migration_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"ServiceOwner","datatype":""},{"Properties":{"Ordinal":"1"},"column":"SignedTo","datatype":""},{"Properties":{"Ordinal":"2"},"column":"ETA","datatype":""},{"Properties":{"Ordinal":"3"},"column":"Status","datatype":""},{"Properties":{"Ordinal":"4"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"5"},"column":"dueDate","datatype":""},{"Properties":{"Ordinal":"6"},"column":"ServiceTree","datatype":""},{"Properties":{"Ordinal":"7"},"column":"PipelineType","datatype":""},{"Properties":{"Ordinal":"8"},"column":"PipelineName","datatype":""},{"Properties":{"Ordinal":"9"},"column":"Url","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_PA_POC'] ingestion csv mapping "hwtest_PA_POC_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"ServiceOwner","datatype":""},{"Properties":{"Ordinal":"1"},"column":"ServiceTree","datatype":""},{"Properties":{"Ordinal":"2"},"column":"PipelineCount","datatype":""},{"Properties":{"Ordinal":"3"},"column":"POC","datatype":""},{"Properties":{"Ordinal":"4"},"column":"In V-Team chat","datatype":""},{"Properties":{"Ordinal":"5"},"column":"Service Status","datatype":""},{"Properties":{"Ordinal":"6"},"column":"Note","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_PowerApps_3p_apps'] ingestion csv mapping "hwtest_PowerApps_3p_apps_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"Role","datatype":""},{"Properties":{"Ordinal":"1"},"column":"PrincipalType","datatype":""},{"Properties":{"Ordinal":"2"},"column":"PrincipalDisplayName","datatype":""},{"Properties":{"Ordinal":"3"},"column":"PrincipalObjectId","datatype":""},{"Properties":{"Ordinal":"4"},"column":"PrincipalFQN","datatype":""},{"Properties":{"Ordinal":"5"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"6"},"column":"RoleAssignmentIdentifier","datatype":""},{"Properties":{"Ordinal":"7"},"column":"splitID","datatype":""},{"Properties":{"Ordinal":"8"},"column":"AppID","datatype":""},{"Properties":{"Ordinal":"9"},"column":"TenantID","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_PowerApps_AppIDs'] ingestion csv mapping "hwtest_PowerApps_AppIDs_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"Role","datatype":""},{"Properties":{"Ordinal":"1"},"column":"PrincipalType","datatype":""},{"Properties":{"Ordinal":"2"},"column":"PrincipalDisplayName","datatype":""},{"Properties":{"Ordinal":"3"},"column":"PrincipalObjectId","datatype":""},{"Properties":{"Ordinal":"4"},"column":"PrincipalFQN","datatype":""},{"Properties":{"Ordinal":"5"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"6"},"column":"RoleAssignmentIdentifier","datatype":""},{"Properties":{"Ordinal":"7"},"column":"splitID","datatype":""},{"Properties":{"Ordinal":"8"},"column":"AppID","datatype":""},{"Properties":{"Ordinal":"9"},"column":"TenantID","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_PowerApps_Gov_AAD_Apps'] ingestion csv mapping "hwtest_PowerApps_Gov_AAD_Apps_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"Role","datatype":""},{"Properties":{"Ordinal":"1"},"column":"PrincipalType","datatype":""},{"Properties":{"Ordinal":"2"},"column":"PrincipalDisplayName","datatype":""},{"Properties":{"Ordinal":"3"},"column":"PrincipalObjectId","datatype":""},{"Properties":{"Ordinal":"4"},"column":"PrincipalFQN","datatype":""},{"Properties":{"Ordinal":"5"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"6"},"column":"RoleAssignmentIdentifier","datatype":""},{"Properties":{"Ordinal":"7"},"column":"splitID","datatype":""},{"Properties":{"Ordinal":"8"},"column":"AppID","datatype":""},{"Properties":{"Ordinal":"9"},"column":"TenantID","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_PowerApps_Internal'] ingestion csv mapping "hwtest_PowerApps_Internal_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"Role","datatype":""},{"Properties":{"Ordinal":"1"},"column":"PrincipalType","datatype":""},{"Properties":{"Ordinal":"2"},"column":"PrincipalDisplayName","datatype":""},{"Properties":{"Ordinal":"3"},"column":"PrincipalObjectId","datatype":""},{"Properties":{"Ordinal":"4"},"column":"PrincipalFQN","datatype":""},{"Properties":{"Ordinal":"5"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"6"},"column":"RoleAssignmentIdentifier","datatype":""},{"Properties":{"Ordinal":"7"},"column":"splitID","datatype":""},{"Properties":{"Ordinal":"8"},"column":"AppID","datatype":""},{"Properties":{"Ordinal":"9"},"column":"TenantID","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_cds_principals'] ingestion csv mapping "hwtest_cds_principals_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"aadapp","datatype":""},{"Properties":{"Ordinal":"1"},"column":"tenantid","datatype":""},{"Properties":{"Ordinal":"2"},"column":"accessMode","datatype":""},{"Properties":{"Ordinal":"3"},"column":"icmTeam","datatype":""},{"Properties":{"Ordinal":"4"},"column":"distributionList","datatype":""},{"Properties":{"Ordinal":"5"},"column":"description","datatype":""},{"Properties":{"Ordinal":"6"},"column":"environmentNames","datatype":""},{"Properties":{"Ordinal":"7"},"column":"serviceName","datatype":""},{"Properties":{"Ordinal":"8"},"column":"serviceTreeId","datatype":""},{"Properties":{"Ordinal":"9"},"column":"infraName","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_cluster_users'] ingestion csv mapping "hwtest_cluster_users_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"Users","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_sheet02'] ingestion csv mapping "hwtest_sheet02_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"ServiceOwner","datatype":""},{"Properties":{"Ordinal":"1"},"column":"SignedTo","datatype":""},{"Properties":{"Ordinal":"2"},"column":"ETA","datatype":""},{"Properties":{"Ordinal":"3"},"column":"Status","datatype":""},{"Properties":{"Ordinal":"4"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"5"},"column":"dueDate","datatype":""},{"Properties":{"Ordinal":"6"},"column":"ServiceTree","datatype":""},{"Properties":{"Ordinal":"7"},"column":"PipelineType","datatype":""},{"Properties":{"Ordinal":"8"},"column":"PipelineName","datatype":""},{"Properties":{"Ordinal":"9"},"column":"Url","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_sheet03'] ingestion csv mapping "hwtest_sheet03_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"ServiceOwner","datatype":""},{"Properties":{"Ordinal":"1"},"column":"SignedTo","datatype":""},{"Properties":{"Ordinal":"2"},"column":"ETA","datatype":""},{"Properties":{"Ordinal":"3"},"column":"Status","datatype":""},{"Properties":{"Ordinal":"4"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"5"},"column":"myExceptionStatus","datatype":""},{"Properties":{"Ordinal":"6"},"column":"dueDate","datatype":""},{"Properties":{"Ordinal":"7"},"column":"ServiceTree","datatype":""},{"Properties":{"Ordinal":"8"},"column":"PipelineType","datatype":""},{"Properties":{"Ordinal":"9"},"column":"PipelineName","datatype":""},{"Properties":{"Ordinal":"10"},"column":"Url","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_sheet_02_21'] ingestion csv mapping "hwtest_sheet_02_21_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"ServiceOwner","datatype":""},{"Properties":{"Ordinal":"1"},"column":"SignedTo","datatype":""},{"Properties":{"Ordinal":"2"},"column":"ETA","datatype":""},{"Properties":{"Ordinal":"3"},"column":"Status","datatype":""},{"Properties":{"Ordinal":"4"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"5"},"column":"myExceptionStatus","datatype":""},{"Properties":{"Ordinal":"6"},"column":"dueDate","datatype":""},{"Properties":{"Ordinal":"7"},"column":"ServiceTree","datatype":""},{"Properties":{"Ordinal":"8"},"column":"PipelineType","datatype":""},{"Properties":{"Ordinal":"9"},"column":"PipelineName","datatype":""},{"Properties":{"Ordinal":"10"},"column":"Url","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_sheet_02_23'] ingestion csv mapping "hwtest_sheet_02_23_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"ServiceOwner","datatype":""},{"Properties":{"Ordinal":"1"},"column":"SignedTo","datatype":""},{"Properties":{"Ordinal":"2"},"column":"ETA","datatype":""},{"Properties":{"Ordinal":"3"},"column":"Status","datatype":""},{"Properties":{"Ordinal":"4"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"5"},"column":"myExceptionStatus","datatype":""},{"Properties":{"Ordinal":"6"},"column":"dueDate","datatype":""},{"Properties":{"Ordinal":"7"},"column":"ServiceTree","datatype":""},{"Properties":{"Ordinal":"8"},"column":"PipelineType","datatype":""},{"Properties":{"Ordinal":"9"},"column":"PipelineName","datatype":""},{"Properties":{"Ordinal":"10"},"column":"Url","datatype":""}]
+```
+
+
+.create-or-alter table ['hwtest_sheet_02_26'] ingestion csv mapping "hwtest_sheet_02_26_mapping"
+```
+[{"Properties":{"Ordinal":"0"},"column":"ServiceOwner","datatype":""},{"Properties":{"Ordinal":"1"},"column":"SignedTo","datatype":""},{"Properties":{"Ordinal":"2"},"column":"ETA","datatype":""},{"Properties":{"Ordinal":"3"},"column":"Status","datatype":""},{"Properties":{"Ordinal":"4"},"column":"Notes","datatype":""},{"Properties":{"Ordinal":"5"},"column":"myExceptionStatus","datatype":""},{"Properties":{"Ordinal":"6"},"column":"dueDate","datatype":""},{"Properties":{"Ordinal":"7"},"column":"ServiceTree","datatype":""},{"Properties":{"Ordinal":"8"},"column":"PipelineType","datatype":""},{"Properties":{"Ordinal":"9"},"column":"PipelineName","datatype":""},{"Properties":{"Ordinal":"10"},"column":"Url","datatype":""}]
+```
+
+
+//  Create functions
+
+.create-or-alter function with (folder="hwtest", docstring="Simple demo function", skipvalidation=true) ['hwtestFunction'] () {
+let a = "a";
+    let b = "b";
+    hwtest_fdf_sink 
+    | take 10
+}
+
+//  Alter Caching Policies
+
+.alter database Playground policy caching hot = 30d
+
+
+//  Alter Retention Policies
+
+.alter database Playground policy retention
+```{
+  "SoftDeletePeriod": "30.00:00:00",
+  "Recoverability": "Enabled"
+}
+```
+
+.alter table PAT_ActiveUsageByApp policy retention
+```{
+  "SoftDeletePeriod": "1095.00:00:00",
+  "Recoverability": "Enabled"
+}
+```
+
+.alter table PAT_ActiveUsageByTenant policy retention
+```{
+  "SoftDeletePeriod": "1095.00:00:00",
+  "Recoverability": "Enabled"
+}
+```
+
+.alter table PAT_ActiveUsageV2 policy retention
+```{
+  "SoftDeletePeriod": "1095.00:00:00",
+  "Recoverability": "Enabled"
+}
+```
+
+.alter table ['tmp_copy_PowerApps_Reporting_ActiveMonthlyTenantPersonaCounts_Stage'] policy retention
+```{
+  "SoftDeletePeriod": "36500.00:00:00",
+  "Recoverability": "Enabled"
+}
+```
+
