@@ -1,12 +1,12 @@
 jobs:
-    # # Power Apps Telemetry: Public cloud ROW cluster
-    # sync-playground:
-    #     target:
-    #         adx:
-    #             clusterUri: https://padata.westus3.kusto.windows.net/
-    #             database: Playground
-    #     action:
-    #         filePath: ../clusters/padata.westus3/Playground.kql
+    # Power Apps Telemetry: Public cloud ROW cluster
+    sync-playground:
+        target:
+            adx:
+                clusterUri: https://padata.westus3.kusto.windows.net/
+                database: Playground
+        action:
+            filePath: ../clusters/padata.westus3/Playground.kql
     # Power Apps Telemetry: Public cloud ROW cluster
     sync-row-PowerApps:
         target:
@@ -23,14 +23,14 @@ jobs:
                 database: PowerApps
         action:
             filePath: ../clusters/powerappsclientneu.northeurope/PowerApps.kql
-    # # Power Apps Telemetry: Public cloud internal ROW cluster
-    # sync-row-internal-PowerApps:
-    #     target:
-    #         adx:
-    #             clusterUri: https://powerappsclientnonprod.eastus2.kusto.windows.net/
-    #             database: PowerApps-Internal
-    #     action:
-    #         filePath: ../clusters/powerappsclientnonprod.eastus2/PowerApps-Internal.kql
+    # Power Apps Telemetry: Public cloud internal ROW cluster
+    sync-row-internal-PowerApps:
+        target:
+            adx:
+                clusterUri: https://powerappsclientnonprod.eastus2.kusto.windows.net/
+                database: PowerApps-Internal
+        action:
+            filePath: ../clusters/powerappsclientnonprod.eastus2/PowerApps-Internal.kql
     # Power Apps Telemetry: Public cloud internal EU cluster
     sync-eu-internal-PowerApps:
         target:
