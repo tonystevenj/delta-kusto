@@ -73,13 +73,26 @@ namespace DeltaKustoLib.CommandModel
         {
             try
             {
+                Console.WriteLine("hwtest1");
+                Console.WriteLine(script);
                 var code = KustoCode.Parse(script);
-                var command = CreateCommand(script, code, ignoreUnknownCommands);
+                Console.WriteLine("hwtest2");
+                var SytaxNodeRoot = code.Syntax;
+                var descendants = SytaxNodeRoot.GetDescendants<SkippedTokens>();
+                Console.WriteLine(descendants.Count);
+                foreach (var desc in descendants)
+                {
+                    Console.WriteLine(desc.ToString());
+                }
 
+
+                var command = CreateCommand(script, code, ignoreUnknownCommands);
+                // Console.WriteLine("hwtest3");
                 return command;
             }
             catch (Exception ex)
-            {
+            {   
+                // Console.WriteLine("hwtest4");
                 throw new DeltaException(
                     $"Issue parsing script",
                     script,
@@ -103,6 +116,7 @@ namespace DeltaKustoLib.CommandModel
 
             if (unknownCommand != null)
             {
+                // Console.WriteLine("hwtest7");
                 return RerouteUnknownCommand(script, unknownCommand, ignoreUnknownCommands);
             }
             else
@@ -112,10 +126,12 @@ namespace DeltaKustoLib.CommandModel
 #endif
                 var customCommand = commandBlock.GetUniqueDescendant<CustomCommand>("custom command");
 
+                // Console.WriteLine("hwtest5");
                 switch (customCommand.CommandKind)
                 {
                     case "CreateFunction":
                     case "CreateOrAlterFunction":
+                        // Console.WriteLine("hwtest6");
                         return CreateFunctionCommand.FromCode(commandBlock);
                     case "DropFunction":
                         return DropFunctionCommand.FromCode(commandBlock);
@@ -295,6 +311,7 @@ namespace DeltaKustoLib.CommandModel
 
         private static IEnumerable<string> SplitCommandScripts(string script)
         {
+            Console.WriteLine("script");
             var lines = script
                 .Split('\n');
                 //  Remove comment lines

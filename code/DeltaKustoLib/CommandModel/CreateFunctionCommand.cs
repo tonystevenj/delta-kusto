@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
@@ -62,11 +61,35 @@ namespace DeltaKustoLib.CommandModel
         {
             var functionNameDeclaration = rootElement.GetFirstDescendant<NameDeclaration>(
                 n => n.NameInParent == "FunctionName" || n.NameInParent == string.Empty);
+
             var functionName = EntityName.FromCode(functionNameDeclaration.Name);
-            var functionDeclaration = rootElement
-                .GetAtLeastOneDescendant<FunctionDeclaration>("Function declaration")
-                .First();
-            var body = TrimFunctionSchemaBody(functionDeclaration.Body.ToString());
+
+            var list = rootElement
+                .GetAtLeastOneDescendant<FunctionDeclaration>("Function declaration");
+            var functionDeclaration = list.First();
+            var body = functionDeclaration.Body.ToString();
+            
+            var SkippedTokens = rootElement.GetDescendants<SkippedTokens>(null);
+            Console.WriteLine(SkippedTokens.Count);
+            Console.WriteLine("hwtest22");
+            Console.WriteLine(rootElement.ChildCount);
+            for (var i = 0; i < rootElement.ChildCount; i++)
+            {
+                Console.WriteLine("hwtest33");
+                Console.WriteLine(rootElement.GetChild(i).Kind);
+                Console.WriteLine(rootElement.GetChild(i).ToString());
+            }
+
+
+            // if (SkippedTokens.Count != 0)
+            // {
+            //     var functionSkippedTokens = SkippedTokens.First();
+            //     // Console.WriteLine("hwtest555");
+            //     // Console.WriteLine(functionSkippedTokens.ToString());
+            //     body += functionSkippedTokens.ToString();
+            // }
+            var trimmedBody = TrimFunctionSchemaBody(body);
+
             var parameters = functionDeclaration
                 .Parameters
                 .Parameters
@@ -81,7 +104,7 @@ namespace DeltaKustoLib.CommandModel
             return new CreateFunctionCommand(
                 functionName,
                 parameters,
-                body,
+                trimmedBody,
                 folder,
                 docString,
                 isView);
