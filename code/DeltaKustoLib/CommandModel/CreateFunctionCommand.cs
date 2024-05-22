@@ -1,7 +1,8 @@
-﻿using Kusto.Language.Syntax;
+﻿﻿using Kusto.Language.Syntax;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 
@@ -61,36 +62,11 @@ namespace DeltaKustoLib.CommandModel
         {
             var functionNameDeclaration = rootElement.GetFirstDescendant<NameDeclaration>(
                 n => n.NameInParent == "FunctionName" || n.NameInParent == string.Empty);
-
             var functionName = EntityName.FromCode(functionNameDeclaration.Name);
-
-            var list = rootElement
-                .GetAtLeastOneDescendant<FunctionDeclaration>("Function declaration");
-            var functionDeclaration = list.First();
-            var body = functionDeclaration.Body.ToString();
-
-            var SkippedTokens = rootElement.GetDescendants<SkippedTokens>(null);
-
-            if (SkippedTokens.Count != 0)
-            {
-                Console.WriteLine("SkippedTokens found, trying to construct the full query, the result might not be accurate");
-                Console.WriteLine("Full query: " + rootElement.ToString());
-                Console.WriteLine("Before repair: " + body.ToString());
-                var functionSkippedTokens = SkippedTokens.First();
-                body += functionSkippedTokens.ToString();
-                for (var i = 0; i < rootElement.ChildCount; i++)
-                {
-                    var child = rootElement.GetChild(i);
-                    if (child.Kind == SyntaxKind.SkippedTokens)
-                    {
-                        body += child.ToString();
-                    }
-                }
-                Console.WriteLine("After repair: " + body.ToString());
-            }
-
-            var trimmedBody = TrimFunctionSchemaBody(body);
-
+            var functionDeclaration = rootElement
+                .GetAtLeastOneDescendant<FunctionDeclaration>("Function declaration")
+                .First();
+            var body = TrimFunctionSchemaBody(functionDeclaration.Body.ToString());
             var parameters = functionDeclaration
                 .Parameters
                 .Parameters
@@ -105,7 +81,7 @@ namespace DeltaKustoLib.CommandModel
             return new CreateFunctionCommand(
                 functionName,
                 parameters,
-                trimmedBody,
+                body,
                 folder,
                 docString,
                 isView);
