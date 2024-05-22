@@ -1,4 +1,4 @@
-.create-or-alter function with (folder = "hwtest", docstring = "Simple demo function", skipvalidation = "true") hwtestFunction02() {      
+.create-or-alter function with (folder = "hwtest", docstring = "Simple demo function", skipvalidation = "true") hwtestFunction02() {
     let nowTime = now();
     let teamFilterCount = toscalar(teamIds | count);
     let paTeams =
@@ -43,5 +43,5 @@
         | join kind=leftouter (cluster('icmcluster.kusto.windows.net').database("IcmDataWarehouse").Contacts
         | summarize arg_max(Lens_IngestionTime, *) by ContactId) on $left.BackupSubstituteContactId==$right.ContactId
         | project TeamId, IsVirtual, TeamName, TeamEmailAddress, Primary, PrimaryEmail, Backup, BackupEmail, PrimarySubstitute, PrimarySubstituteEmail, BackupSubstitute = FullName, BackupSubstituteEmail = EmailAddress
-        | project TeamId, IsVirtual, TeamName, TeamEmailAddress, Primary = iff(isnotempty(PrimarySubstitute),strcat(PrimarySubstitute, " [sub for ",Primary,"]"),Primary), PrimaryEmail = iff(isnotempty(PrimarySubstituteEmail),PrimarySubstituteEmail,PrimaryEmail), Backup = iff(isnotempty(BackupSubstitute),strcat(BackupSubstitute," [sub for ",Backup,"]"),Backup), BackupEmail = iff(isnotempty(BackupSubstituteEmail),BackupSubstituteEmail,BackupEmail) 
+        | project TeamId, IsVirtual, TeamName, TeamEmailAddress, Primary = iff(isnotempty(PrimarySubstitute),strcat(PrimarySubstitute, " [sub for ",Primary,"]"),Primary), PrimaryEmail = iff(isnotempty(PrimarySubstituteEmail),PrimarySubstituteEmail,PrimaryEmail), Backup = iff(isnotempty(BackupSubstitute),strcat(BackupSubstitute," [sub for ",Backup,"]"),Backup), BackupEmail = iff(isnotempty(BackupSubstituteEmail),BackupSubstituteEmail,BackupEmail)
 }

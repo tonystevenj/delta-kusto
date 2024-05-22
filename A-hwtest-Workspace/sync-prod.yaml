@@ -8,77 +8,77 @@ jobs:
         action:
             filePath: ../clusters/padata.westus3/Playground.kql
     # Power Apps Telemetry: Public cloud ROW cluster
-    sync-row-PowerApps:
-        target:
-            adx:
-                clusterUri: https://powerappsclient.eastus2.kusto.windows.net/
-                database: PowerApps
-        action:
-            filePath: ../clusters/powerappsclient.eastus2/PowerApps.kql
-    # Power Apps Telemetry: Public cloud EU cluster
-    sync-eu-PowerApps:
-        target:
-            adx:
-                clusterUri: https://powerappsclientneu.northeurope.kusto.windows.net/
-                database: PowerApps
-        action:
-            filePath: ../clusters/powerappsclientneu.northeurope/PowerApps.kql
-    # Power Apps Telemetry: Public cloud internal ROW cluster
-    sync-row-internal-PowerApps:
-        target:
-            adx:
-                clusterUri: https://powerappsclientnonprod.eastus2.kusto.windows.net/
-                database: PowerApps-Internal
-        action:
-            filePath: ../clusters/powerappsclientnonprod.eastus2/PowerApps-Internal.kql
-    # Power Apps Telemetry: Public cloud internal EU cluster
-    sync-eu-internal-PowerApps:
-        target:
-            adx:
-                clusterUri: https://pappsclientnonprodneu.northeurope.kusto.windows.net/
-                database: PowerApps-Internal
-        action:
-            filePath: ../clusters/pappsclientnonprodneu.northeurope/PowerApps-Internal.kql
-    # Power Apps Telemetry:  Sovereign cloud Gov cluster
-    sync-PowerApps-Gov:
-        target:
-            adx:
-                clusterUri: https://powerappsclientgov.eastus2.kusto.windows.net/
-                database: PowerApps-Gov
-        action:
-            filePath: ../clusters/powerappsclientgov.eastus2/PowerApps-Gov.kql
-    # Power Apps Telemetry:  Sovereign cloud GovHigh cluster
-    sync-PowerApps-GovHigh:
-        target:
-            adx:
-                clusterUri: https://kusto.aria.microsoft.com/
-                database: d31229fb23b0406790b9332e5f465dfc
-        action:
-            filePath: ../clusters/kusto.aria/PowerApps-GovHigh.kql
-    # Power Apps Telemetry:  Sovereign cloud DoD cluster
-    sync-PowerApps-DoD:
-        target:
-            adx:
-                clusterUri: https://kusto.aria.microsoft.com/
-                database: 41cc10dad35043adbcdace2896484ab4
-        action:
-            filePath: ../clusters/kusto.aria/PowerApps-DoD.kql
-    # Power Apps Telemetry:  Sovereign cloud Mooncake cluster
-    sync-PowerApps-Mooncake:
-        target:
-            adx:
-                clusterUri: https://kusto.aria.microsoft.com/
-                database: 1c1d139788f74386bd95e752dd781371
-        action:
-            filePath: ../clusters/kusto.aria/PowerApps-Mooncake.kql
-    # Power Apps Telemetry:  Engineering cluster
-    sync-PowerApps-Engineering:
-        target:
-            adx:
-                clusterUri: https://kusto.aria.microsoft.com/
-                database: 9e3b07ee31d44eb9aba317884f5e8ad4
-        action:
-            filePath: ../clusters/kusto.aria/PowerApps-Engineering.kql
+    # sync-row-PowerApps:
+    #     target:
+    #         adx:
+    #             clusterUri: https://powerappsclient.eastus2.kusto.windows.net/
+    #             database: PowerApps
+    #     action:
+    #         filePath: ../clusters/powerappsclient.eastus2/PowerApps.kql
+    # # Power Apps Telemetry: Public cloud EU cluster
+    # sync-eu-PowerApps:
+    #     target:
+    #         adx:
+    #             clusterUri: https://powerappsclientneu.northeurope.kusto.windows.net/
+    #             database: PowerApps
+    #     action:
+    #         filePath: ../clusters/powerappsclientneu.northeurope/PowerApps.kql
+    # # Power Apps Telemetry: Public cloud internal ROW cluster
+    # sync-row-internal-PowerApps:
+    #     target:
+    #         adx:
+    #             clusterUri: https://powerappsclientnonprod.eastus2.kusto.windows.net/
+    #             database: PowerApps-Internal
+    #     action:
+    #         filePath: ../clusters/powerappsclientnonprod.eastus2/PowerApps-Internal.kql
+    # # Power Apps Telemetry: Public cloud internal EU cluster
+    # sync-eu-internal-PowerApps:
+    #     target:
+    #         adx:
+    #             clusterUri: https://pappsclientnonprodneu.northeurope.kusto.windows.net/
+    #             database: PowerApps-Internal
+    #     action:
+    #         filePath: ../clusters/pappsclientnonprodneu.northeurope/PowerApps-Internal.kql
+    # # Power Apps Telemetry:  Sovereign cloud Gov cluster
+    # sync-PowerApps-Gov:
+    #     target:
+    #         adx:
+    #             clusterUri: https://powerappsclientgov.eastus2.kusto.windows.net/
+    #             database: PowerApps-Gov
+    #     action:
+    #         filePath: ../clusters/powerappsclientgov.eastus2/PowerApps-Gov.kql
+    # # Power Apps Telemetry:  Sovereign cloud GovHigh cluster
+    # sync-PowerApps-GovHigh:
+    #     target:
+    #         adx:
+    #             clusterUri: https://kusto.aria.microsoft.com/
+    #             database: d31229fb23b0406790b9332e5f465dfc
+    #     action:
+    #         filePath: ../clusters/kusto.aria/PowerApps-GovHigh.kql
+    # # Power Apps Telemetry:  Sovereign cloud DoD cluster
+    # sync-PowerApps-DoD:
+    #     target:
+    #         adx:
+    #             clusterUri: https://kusto.aria.microsoft.com/
+    #             database: 41cc10dad35043adbcdace2896484ab4
+    #     action:
+    #         filePath: ../clusters/kusto.aria/PowerApps-DoD.kql
+    # # Power Apps Telemetry:  Sovereign cloud Mooncake cluster
+    # sync-PowerApps-Mooncake:
+    #     target:
+    #         adx:
+    #             clusterUri: https://kusto.aria.microsoft.com/
+    #             database: 1c1d139788f74386bd95e752dd781371
+    #     action:
+    #         filePath: ../clusters/kusto.aria/PowerApps-Mooncake.kql
+    # # Power Apps Telemetry:  Engineering cluster
+    # sync-PowerApps-Engineering:
+    #     target:
+    #         adx:
+    #             clusterUri: https://kusto.aria.microsoft.com/
+    #             database: 9e3b07ee31d44eb9aba317884f5e8ad4
+    #     action:
+    #         filePath: ../clusters/kusto.aria/PowerApps-Engineering.kql
 tokenProvider:
     azCli:
         interactive: false
