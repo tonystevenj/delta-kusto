@@ -1,5 +1,5 @@
 jobs:
-    # Power Apps Telemetry: Public cloud ROW cluster
+    # PaData: Playground
     sync-playground:
         target:
             adx:
@@ -7,6 +7,49 @@ jobs:
                 database: Playground
         action:
             filePath: ../clusters/padata.westus3/Playground.kql
+    # PaData: UnifiedMetrics-Prod-ROW-WUS3
+    sync-playground:
+        target:
+            adx:
+                clusterUri: https://padata.westus3.kusto.windows.net/
+                database: UnifiedMetrics-Prod-ROW-WUS3
+        action:
+            filePath: ../clusters/padata.westus3/UnifiedMetrics-Prod-ROW-WUS3.kql
+    # PaData: TBD
+    sync-playground:
+        target:
+            adx:
+                clusterUri: https://padata.westus3.kusto.windows.net/
+                database: TBD
+        action:
+            filePath: ../clusters/padata.westus3/TBD.kql
+    # PaData: TBD
+    sync-playground:
+        target:
+            adx:
+                clusterUri: https://padata.westus3.kusto.windows.net/
+                database: TBD
+        action:
+            filePath: ../clusters/padata.westus3/TBD.kql
+    # PaData: TBD
+    sync-playground:
+        target:
+            adx:
+                clusterUri: https://padata.westus3.kusto.windows.net/
+                database: TBD
+        action:
+            filePath: ../clusters/padata.westus3/TBD.kql
+    # PaData: TBD
+    sync-playground:
+        target:
+            adx:
+                clusterUri: https://padata.westus3.kusto.windows.net/
+                database: TBD
+        action:
+            filePath: ../clusters/padata.westus3/TBD.kql
+
+
+
     # Power Apps Telemetry: Public cloud ROW cluster
     sync-row-PowerApps:
         target:
