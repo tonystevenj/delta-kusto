@@ -2,10 +2,13 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
+		<IsPackable>true</IsPackable>
 		<TargetFramework>net7.0</TargetFramework>
 		<RootNamespace>delta_kusto</RootNamespace>
 		<Nullable>enable</Nullable>
 		<Version>0.15.2</Version>
+		<PackAsTool>true</PackAsTool>
+    	<PackageOutputPath>./nupkg</PackageOutputPath>
     <!--	Avoid having each library being trimmed (instead of only opt-in ones)	-->
     <TrimMode>partial</TrimMode>
 		<!--	Important to avoid the trimming warning hell ; since we automate-test everything, we do not need static analysis	-->
