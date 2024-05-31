@@ -1,10 +1,20 @@
 
+Dev:
+
 dotnet build code/delta-kusto-solution.sln --no-restore
 
 powershell -Command ('
 
 code/DeltaKustoAdxIntegrationTest/bin/Debug/net7.0/delta-kusto.exe 
--p C:\Users\Hongjing-Data\VSCode-Workspace\delta-kusto\A-hwtest-Workspace\generate-kusto-delta-new.yaml  
+-p C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/A-hwtest-Workspace/generate-kusto-delta-new.yaml  
 
 ' -replace("`n", " "))
+
+
+Release:
+
+dotnet pack code/delta-kusto/delta-kusto.csproj -c Release
+
+dotnet nuget push --source "https://msazure.pkgs.visualstudio.com/_packaging/hwtest-feeds-msazure/nuget/v3/index.json" `
+--api-key az C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/code/delta-kusto/nupkg/delta-kusto.0.15.4.nupkg
 
