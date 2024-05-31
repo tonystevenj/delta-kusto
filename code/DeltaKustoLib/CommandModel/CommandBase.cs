@@ -96,7 +96,7 @@ namespace DeltaKustoLib.CommandModel
 
             if (commandBlock == null)
             {
-                throw new DeltaException("Script isn't a command");
+                return null;
             }
 
             var unknownCommand = commandBlock.GetDescendants<UnknownCommand>().FirstOrDefault();
