@@ -96,7 +96,8 @@ namespace DeltaKustoLib.CommandModel
 
             if (commandBlock == null)
             {
-                throw new DeltaException("Script isn't a command");
+                return null;
+                // throw new DeltaException("Script isn't a command");
             }
 
             var unknownCommand = commandBlock.GetDescendants<UnknownCommand>().FirstOrDefault();
@@ -266,7 +267,7 @@ namespace DeltaKustoLib.CommandModel
             //{
             //    var cutPoint = unknownCommand.Parts[1].TextStart + unknownCommand.Parts[1].FullWidth;
             //    var newScript = ".create tables " + script.Substring(cutPoint);
-            
+
             //    return ParseAndCreateCommand(newScript, ignoreUnknownCommands);
             //}
             //else
@@ -296,9 +297,12 @@ namespace DeltaKustoLib.CommandModel
         private static IEnumerable<string> SplitCommandScripts(string script)
         {
             var lines = script
-                .Split('\n');
+                .Split(
+                    new string[] { "\r\n", "\r", "\n" },
+                    StringSplitOptions.None
+                );
                 //  Remove comment lines
-                .Where(l => !l.Trim().StartsWith("//"));
+                // .Where(l => !l.Trim().StartsWith("//"));
             var currentCommandLines = new List<string>();
 
             foreach (var line in lines)
@@ -312,7 +316,7 @@ namespace DeltaKustoLib.CommandModel
                     }
                     currentCommandLines.Add(line);
                 }
-                else if(line.Trim() != string.Empty)
+                else if (line.Trim() != string.Empty)
                 {
                     currentCommandLines.Add(line);
                 }
