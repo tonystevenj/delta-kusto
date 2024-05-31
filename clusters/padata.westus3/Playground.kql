@@ -96,6 +96,9 @@
 .create-merge table PAT_ActiveUsageV2 (['ts']:datetime, ['dau']:long, ['wau']:long, ['mau']:long, ['dat']:long, ['wat']:long, ['mat']:long, ['eventName']:string, Persona:string, SubPersona:string, ['retentionClass']:string) with (folder="", docstring="") 
 
 
+.create-merge table PAppsMobileFrontline_IDC_NME_DataAggregationDaily_EU_Test (Region:string, Period:string, Date:datetime, Scenario:string, ControlId:string, Counts:long, Sessions:long, Errors:long, SLA:real, Tenants:long, Users:long, GeneratedStreamDate:datetime) with (folder="", docstring="") 
+
+
 .create-merge table SapErpLogs_wRFCName (TIMESTAMP:datetime, Tenant:string, Result:string, ['operationName']:string, ['connectorType']:string, ['message']:string, ['operationCount']:long, ['avg_durationInMilliseconds']:real) with (folder="", docstring="") 
 
 
@@ -307,11 +310,60 @@
 
 //  Create functions
 
+.create-or-alter function with (folder="Client", docstring="Get aggregated events from Aria and AppInsight", skipvalidation=true) GetRawEvents (['start']:datetime, ['end']:datetime) {
+event | where timestamp between (start..end)
+}
+
 .create-or-alter function with (folder="hwtest", docstring="Simple demo function", skipvalidation=true) ['hwtestFunction'] () {
-let a = "a";
-    let b = "b";
-    hwtest_fdf_sink 
-    | take 10
+event | where timestamp between (start..end)
+}
+
+.create-or-alter function with (folder="hwtest", docstring="Simple demo function", skipvalidation=true) ['hwtestFunction02'] () {
+let nowTime = now();
+    let teamFilterCount = toscalar(teamIds | count);
+    let paTeams = 
+	cluster('icmcluster.kusto.windows.net').database('IcMDataWarehouse').Teams
+	| where TenantId==25646 
+	| where teamFilterCount == 0 or TeamId in (teamIds)
+	| summarize arg_max(Lens_IngestionTime, *) by TeamId
+	| project TeamId, TeamName, TeamEmailAddress=strcat(Alias, "@", AliasDomain), RotationTeamId=coalesce(ReferencedTeamId, TeamId), IsVirtual = iif(isnull(ReferencedTeamId), false, true);
+	paTeams
+	| join kind=leftouter (
+	   cluster('icmcluster.kusto.windows.net').database('DirectoryServicePROD').Rotations
+	   | where TeamId in (paTeams | distinct RotationTeamId)
+	   | summarize arg_max(IngestTime, *) by TeamId) on $left.RotationTeamId == $right.TeamId
+    | join kind=leftouter (
+	   cluster('icmcluster.kusto.windows.net').database('DirectoryServicePROD').TeamSchedule
+	   | where TeamId in (paTeams | distinct RotationTeamId)
+	   | summarize arg_max(IngestTime, *) by TeamId) on $left.RotationTeamId == $right.TeamId
+    | extend TeamOnCallSlots=parse_json(TeamOnCallSlotsInUtcJson)
+	| where Name <> '' // rotation name
+	| project TeamId, IsVirtual, TeamName, TeamEmailAddress, PrimarySlot=TeamOnCallSlots, BackupSlot=TeamOnCallSlots, SlotCount=array_length(TeamOnCallSlots)
+	| mv-apply PrimarySlot on (where PrimarySlot['OnCallPosition'] == 0 
+	| limit 1)
+	| mv-apply BackupSlot on (where SlotCount == 1 or BackupSlot['OnCallPosition'] == 1 
+	| limit 1)
+	| project TeamId, IsVirtual, TeamName, TeamEmailAddress, PrimaryContactId=tolong(PrimarySlot['ContactId']), tolong(BackupContactId=BackupSlot['ContactId'])
+	| join kind=leftouter (cluster('icmcluster.kusto.windows.net').database('IcMDataWarehouse').Contacts
+	| summarize arg_max(Lens_IngestionTime, *) by ContactId) on $left.PrimaryContactId==$right.ContactId
+	| join kind=leftouter (cluster('icmcluster.kusto.windows.net').database('IcMDataWarehouse').Contacts
+	| summarize arg_max(Lens_IngestionTime, *) by ContactId) on $left.BackupContactId==$right.ContactId
+	| project TeamId, IsVirtual, TeamName, TeamEmailAddress, Primary=FullName, PrimaryEmail=EmailAddress, PrimaryContactId = ContactId, Backup=FullName1, BackupEmail=EmailAddress1, BackupContactId = ContactId1
+	| join kind=leftouter (cluster('icmcluster.kusto.windows.net').database("DirectoryServicePROD").Substitutions 
+	| where StartTimeUtc <= nowTime  and nowTime < EndTimeUtc 
+	| summarize arg_max(IngestTime,*) by TeamId) on TeamId, $left.PrimaryContactId == $right.OriginalContactId
+	| project TeamId, IsVirtual, TeamName, TeamEmailAddress, Primary, PrimaryEmail, PrimaryContactId, Backup, BackupEmail, BackupContactId, PrimarySubstituteContactId = SubstituteContactId
+	| join kind=leftouter (cluster('icmcluster.kusto.windows.net').database("IcmDataWarehouse").Contacts
+	| summarize arg_max(Lens_IngestionTime, *) by ContactId) on $left.PrimarySubstituteContactId==$right.ContactId
+	| project TeamId, IsVirtual, TeamName, TeamEmailAddress, Primary, PrimaryEmail, PrimaryContactId, Backup, BackupEmail, BackupContactId, PrimarySubstitute = FullName, PrimarySubstituteEmail = EmailAddress
+	| join kind=leftouter (cluster('icmcluster.kusto.windows.net').database("DirectoryServicePROD").Substitutions 
+	| where StartTimeUtc <= nowTime  and nowTime < EndTimeUtc
+	| summarize arg_max(IngestTime,*) by TeamId) on TeamId, $left.BackupContactId == $right.OriginalContactId
+	| project TeamId, IsVirtual, TeamName, TeamEmailAddress, Primary, PrimaryEmail, PrimaryContactId, Backup, BackupEmail, BackupContactId, PrimarySubstitute, PrimarySubstituteEmail, BackupSubstituteContactId = SubstituteContactId
+	| join kind=leftouter (cluster('icmcluster.kusto.windows.net').database("IcmDataWarehouse").Contacts
+	| summarize arg_max(Lens_IngestionTime, *) by ContactId) on $left.BackupSubstituteContactId==$right.ContactId
+	| project TeamId, IsVirtual, TeamName, TeamEmailAddress, Primary, PrimaryEmail, Backup, BackupEmail, PrimarySubstitute, PrimarySubstituteEmail, BackupSubstitute = FullName, BackupSubstituteEmail = EmailAddress
+	| project TeamId, IsVirtual, TeamName, TeamEmailAddress, Primary = iff(isnotempty(PrimarySubstitute),strcat(PrimarySubstitute, " [sub for ",Primary,"]"),Primary), PrimaryEmail = iff(isnotempty(PrimarySubstituteEmail),PrimarySubstituteEmail,PrimaryEmail), Backup = iff(isnotempty(BackupSubstitute),strcat(BackupSubstitute," [sub for ",Backup,"]"),Backup), BackupEmail = iff(isnotempty(BackupSubstituteEmail),BackupSubstituteEmail,BackupEmail)
 }
 
 //  Alter Caching Policies

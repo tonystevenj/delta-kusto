@@ -1,14 +1,14 @@
 jobs:
-  offline-delta:
-    current:
-        adx:
-            clusterUri:  "https://padata.westus3.kusto.windows.net/"
-            database:  "Playground"
-    target:
-      scripts:
-        - filePath:  "C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/A-hwtest-Workspace/Playground.kql"
-    action:
-        filePath:  "C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/A-hwtest-Workspace/Playground-delta.kql"
+  sync-row-PowerApps:
+      current:
+          adx:
+              clusterUri: https://powerappsclient.eastus2.kusto.windows.net/
+              database: PowerApps
+      target:
+          scripts:
+              - filePath: C:/Users/Hongjing-Data/VSCode-Workspace/PowerApps-Telemetry/A-hwtest-workspace/Kusto-Delta/clusters/powerappsclient.eastus2/PowerApps.kql
+      action:
+          filePath:  C:/Users/Hongjing-Data/VSCode-Workspace/PowerApps-Telemetry/A-hwtest-workspace/Kusto-Delta/clusters/powerappsclient.eastus2/PowerApps-delta.kql
 tokenProvider:
     azCli:
         interactive: false
