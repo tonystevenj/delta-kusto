@@ -15,38 +15,38 @@ jobs:
                 database: UnifiedMetrics-Prod-ROW-WUS3
         action:
             filePath: ../clusters/padata.westus3/UnifiedMetrics-Prod-ROW-WUS3.kql
-    # PaData: TBD
-    sync-playground:
-        target:
-            adx:
-                clusterUri: https://padata.westus3.kusto.windows.net/
-                database: TBD
-        action:
-            filePath: ../clusters/padata.westus3/TBD.kql
-    # PaData: TBD
-    sync-playground:
-        target:
-            adx:
-                clusterUri: https://padata.westus3.kusto.windows.net/
-                database: TBD
-        action:
-            filePath: ../clusters/padata.westus3/TBD.kql
-    # PaData: TBD
-    sync-playground:
-        target:
-            adx:
-                clusterUri: https://padata.westus3.kusto.windows.net/
-                database: TBD
-        action:
-            filePath: ../clusters/padata.westus3/TBD.kql
-    # PaData: TBD
-    sync-playground:
-        target:
-            adx:
-                clusterUri: https://padata.westus3.kusto.windows.net/
-                database: TBD
-        action:
-            filePath: ../clusters/padata.westus3/TBD.kql
+    # # PaData: TBD
+    # sync-playground:
+    #     target:
+    #         adx:
+    #             clusterUri: https://padata.westus3.kusto.windows.net/
+    #             database: TBD
+    #     action:
+    #         filePath: ../clusters/padata.westus3/TBD.kql
+    # # PaData: TBD
+    # sync-playground:
+    #     target:
+    #         adx:
+    #             clusterUri: https://padata.westus3.kusto.windows.net/
+    #             database: TBD
+    #     action:
+    #         filePath: ../clusters/padata.westus3/TBD.kql
+    # # PaData: TBD
+    # sync-playground:
+    #     target:
+    #         adx:
+    #             clusterUri: https://padata.westus3.kusto.windows.net/
+    #             database: TBD
+    #     action:
+    #         filePath: ../clusters/padata.westus3/TBD.kql
+    # # PaData: TBD
+    # sync-playground:
+    #     target:
+    #         adx:
+    #             clusterUri: https://padata.westus3.kusto.windows.net/
+    #             database: TBD
+    #     action:
+    #         filePath: ../clusters/padata.westus3/TBD.kql
 
 
 

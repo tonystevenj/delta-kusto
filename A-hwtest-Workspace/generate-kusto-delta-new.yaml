@@ -1,0 +1,14 @@
+jobs:
+  offline-delta:
+    current:
+        adx:
+            clusterUri:  "https://padata.westus3.kusto.windows.net/"
+            database:  "Playground"
+    target:
+      scripts:
+        - filePath:  "C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/A-hwtest-Workspace/Playground.kql"
+    action:
+        filePath:  "C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/A-hwtest-Workspace/Playground-delta.kql"
+tokenProvider:
+    azCli:
+        interactive: false

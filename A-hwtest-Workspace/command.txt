@@ -1,0 +1,10 @@
+
+dotnet build code/delta-kusto-solution.sln --no-restore
+
+powershell -Command ('
+
+code/DeltaKustoAdxIntegrationTest/bin/Debug/net7.0/delta-kusto.exe 
+-p C:\Users\Hongjing-Data\VSCode-Workspace\delta-kusto\A-hwtest-Workspace\generate-kusto-delta-new.yaml  
+
+' -replace("`n", " "))
+

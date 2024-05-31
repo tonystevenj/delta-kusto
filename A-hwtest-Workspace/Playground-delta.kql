@@ -1,0 +1,6 @@
+//  Drop Tables
+
+.drop table Adl_Dev_public_row_PowerApps_Reporting_ActiveMonthlyBrowserNameOSTypeCounts_Overall
+
+.drop table Adl_Dev_public_row_PowerApps_Reporting_ActiveMonthlyTenantBrowserNameOSTypeCounts_Overall
+
