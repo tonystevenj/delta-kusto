@@ -13,7 +13,7 @@ namespace DeltaKustoIntegration.Database
         private static readonly DatabaseModel EMPTY_MODEL = DatabaseModel.FromCommands(new CommandBase[0]);
 
         Task<DatabaseModel> IDatabaseProvider.RetrieveDatabaseAsync(
-            CancellationToken ct)
+            CancellationToken ct, string options)
         {
             return Task.FromResult(EMPTY_MODEL);
         }

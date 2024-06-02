@@ -102,7 +102,7 @@ namespace DeltaKustoLib.KustoModel
         }
 
         public static DatabaseModel FromCommands(
-            IEnumerable<CommandBase> commands)
+            IEnumerable<CommandBase> commands, string options = "")
         {
             var commandTypeIndex = commands
                 .GroupBy(c => c.GetType())
@@ -252,9 +252,10 @@ namespace DeltaKustoLib.KustoModel
                 tableIngestionTimePolicies,
                 updatePolicies);
 
+
             return new DatabaseModel(
                 createFunctions,
-                tableModels,
+                options.Contains("noTable") ? new List<TableModel>() : tableModels,
                 dbCachingPolicies.FirstOrDefault(),
                 dbIngestionBatchingPolicies.FirstOrDefault(),
                 dbMergePolicies.FirstOrDefault(),

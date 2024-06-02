@@ -28,7 +28,7 @@ namespace DeltaKustoIntegration.Database
         }
 
         async Task<DatabaseModel> IDatabaseProvider.RetrieveDatabaseAsync(
-            CancellationToken ct)
+            CancellationToken ct, string options)
         {
             _tracer.WriteLine(true, "Retrieve scripts DB start");
 
