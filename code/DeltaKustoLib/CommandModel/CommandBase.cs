@@ -26,13 +26,9 @@ namespace DeltaKustoLib.CommandModel
     {
         public static IImmutableList<CommandBase> FromScript(
             string script,
-            bool ignoreUnknownCommands = false,
-            bool noTable = false)
+            bool ignoreUnknownCommands = false)
         {
-            Console.WriteLine("hwtest FromScript");
-            Console.WriteLine(noTable);
-            
-            var scripts = SplitCommandScripts(script, noTable);
+            var scripts = SplitCommandScripts(script);
             var commands = scripts
                 .Select(s => ParseAndCreateCommand(s, ignoreUnknownCommands))
                 .Where(c => c != null)
@@ -298,15 +294,15 @@ namespace DeltaKustoLib.CommandModel
             return newScript;
         }
 
-        private static IEnumerable<string> SplitCommandScripts(string script, bool noTable = false)
+        private static IEnumerable<string> SplitCommandScripts(string script)
         {
             var lines = script
                 .Split(
                     new string[] { "\r\n", "\r", "\n" },
                     StringSplitOptions.None
                 );
-            //  Remove comment lines
-            // .Where(l => !l.Trim().StartsWith("//"));
+                //  Remove comment lines
+                // .Where(l => !l.Trim().StartsWith("//"));
             var currentCommandLines = new List<string>();
 
             foreach (var line in lines)
@@ -315,15 +311,7 @@ namespace DeltaKustoLib.CommandModel
                 {
                     if (currentCommandLines.Any())
                     {
-                        if (
-                            !noTable
-                            ||
-                            (!currentCommandLines.First().Trim().StartsWith(".create-merge table") && !currentCommandLines.First().Trim().StartsWith(".alter-merge table"))
-                            )
-                        {
-                            yield return string.Join('\n', currentCommandLines);
-                        }
-
+                        yield return string.Join('\n', currentCommandLines);
                         currentCommandLines.Clear();
                     }
                     currentCommandLines.Add(line);
@@ -334,13 +322,7 @@ namespace DeltaKustoLib.CommandModel
                 }
             }
 
-            if (currentCommandLines.Any()
-                && (
-                    !noTable
-                    ||
-                    (!currentCommandLines.First().Trim().StartsWith(".create-merge table") && !currentCommandLines.First().Trim().StartsWith(".alter-merge table"))
-                    )
-                )
+            if (currentCommandLines.Any())
             {
                 yield return string.Join('\n', currentCommandLines);
             }
