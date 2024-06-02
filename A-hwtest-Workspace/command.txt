@@ -7,6 +7,8 @@ dotnet build code/delta-kusto-solution.sln --no-restore
 # CD to consumer folder so that parameters in the job yaml config can use relative path
 cd C:\Users\Hongjing-Data\VSCode-Workspace\PowerApps-Telemetry
 
+# build:
+dotnet build code/delta-kusto-solution.sln --no-restore
 
 # pull:
 powershell -Command ('
