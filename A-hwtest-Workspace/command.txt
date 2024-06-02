@@ -1,17 +1,31 @@
 
-Dev:
+# Dev:
 
 dotnet build code/delta-kusto-solution.sln --no-restore
 
+
+# CD to consumer folder so that parameters in the job yaml config can use relative path
+cd C:\Users\Hongjing-Data\VSCode-Workspace\PowerApps-Telemetry
+
+
+# pull:
 powershell -Command ('
 
-code/DeltaKustoAdxIntegrationTest/bin/Debug/net7.0/delta-kusto.exe 
--p C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/A-hwtest-Workspace/generate-kusto-delta-new.yaml  
+C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/code/delta-kusto/bin/Debug/net7.0/delta-kusto.exe
+-p C:\Users\Hongjing-Data\VSCode-Workspace\PowerApps-Telemetry\A-hwtest-workspace\Kusto-Delta\deployment\sync-prod.yaml
+
+' -replace("`n", " "))
+
+# Calculate Delta
+powershell -Command ('
+
+C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/code/delta-kusto/bin/Debug/net7.0/delta-kusto.exe
+-p C:/Users/Hongjing-Data/VSCode-Workspace/PowerApps-Telemetry/A-hwtest-workspace/Kusto-Delta/deployment/generate-kusto-delta.yaml
 
 ' -replace("`n", " "))
 
 
-Release:
+# Release:
 
 dotnet pack code/delta-kusto/delta-kusto.csproj -c Release
 
