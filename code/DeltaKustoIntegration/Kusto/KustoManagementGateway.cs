@@ -73,7 +73,7 @@ namespace DeltaKustoIntegration.Kusto
             var schemaCommandText = Select(
                 schemaOutput,
                 r => (string)r["DatabaseSchemaScript"]);
-            var schemaCommands = CommandBase.FromScript(string.Join("\n\n", schemaCommandText), true);
+            var schemaCommands = CommandBase.FromScript(string.Join("\n\n", schemaCommandText), true, true);
             var allCommands = schemaCommands
                 .ToImmutableArray();
 
