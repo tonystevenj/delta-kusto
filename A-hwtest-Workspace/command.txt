@@ -10,6 +10,15 @@ cd C:\Users\Hongjing-Data\VSCode-Workspace\PowerApps-Telemetry
 # build:
 dotnet build code/delta-kusto-solution.sln --no-restore
 
+
+# pull playground:
+powershell -Command ('
+
+C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/code/delta-kusto/bin/Debug/net7.0/delta-kusto.exe
+-p C:\Users\Hongjing-Data\VSCode-Workspace\PowerApps-Telemetry\A-hwtest-workspace\Kusto-Delta\deployment\sync-prod-test-builtIn.yaml
+
+' -replace("`n", " "))
+
 # pull:
 powershell -Command ('
 
