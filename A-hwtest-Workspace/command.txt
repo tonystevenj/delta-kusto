@@ -32,5 +32,5 @@ C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/code/delta-kusto/bin/Debug/n
 dotnet pack code/delta-kusto/delta-kusto.csproj -c Release
 
 dotnet nuget push --source "https://msazure.pkgs.visualstudio.com/_packaging/hwtest-feeds-msazure/nuget/v3/index.json" `
---api-key az C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/code/delta-kusto/nupkg/delta-kusto.0.15.4.nupkg
+--api-key az C:/Users/Hongjing-Data/VSCode-Workspace/delta-kusto/code/delta-kusto/nupkg/delta-kusto.0.15.7.nupkg
 
