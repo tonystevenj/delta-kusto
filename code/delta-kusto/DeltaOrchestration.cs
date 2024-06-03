@@ -217,8 +217,8 @@ namespace delta_kusto
 
                 var targetDbProvider = CreateDatabaseProvider(job.Target, kustoGatewayFactory, localFileGateway);
 
-                var currentDbTask = RetrieveDatabaseAsync(currentDbProvider, "current", "noTable");
-                var targetDbTask = RetrieveDatabaseAsync(targetDbProvider, "target", "noTable");
+                var currentDbTask = RetrieveDatabaseAsync(currentDbProvider, "current", job.options != null? job.options : "");
+                var targetDbTask = RetrieveDatabaseAsync(targetDbProvider, "target", job.options != null? job.options : "");
 
                 await Task.WhenAll(currentDbTask, targetDbTask);
 

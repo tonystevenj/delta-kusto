@@ -11,6 +11,8 @@ namespace DeltaKustoIntegration.Parameterization
         public SourceParameterization? Target { get; set; }
 
         public ActionParameterization? Action { get; set; }
+        
+        public string? options { get; set; }
 
         public void Validate()
         {
