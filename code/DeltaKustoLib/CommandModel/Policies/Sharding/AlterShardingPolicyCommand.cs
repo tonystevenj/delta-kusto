@@ -32,8 +32,8 @@ namespace DeltaKustoLib.CommandModel.Policies.Sharding
         public override string CommandFriendlyName => ".alter <entity> policy sharding";
 
         public override string ScriptPath => EntityType == EntityType.Database
-            ? $"tables/policies/sharding/create/{EntityName}"
-            : $"databases/policies/sharding/create";
+            ? $"databases/policies/sharding/create/{EntityName}"
+            : $"tables/policies/sharding/create/{EntityName}";
 
         public AlterShardingPolicyCommand(
             EntityType entityType,
