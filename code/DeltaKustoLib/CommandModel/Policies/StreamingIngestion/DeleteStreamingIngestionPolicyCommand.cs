@@ -13,8 +13,8 @@ namespace DeltaKustoLib.CommandModel.Policies.StreamingIngestion
         public override string CommandFriendlyName => ".delete <entity> policy streamingingestion";
 
         public override string ScriptPath => EntityType == EntityType.Database
-            ? $"tables/policies/streamingingestion/delete"
-            : $"db/policies/delete";
+            ? $"databases/policies/streamingingestion/delete"
+            : $"tables/policies/delete";
 
         public DeleteStreamingIngestionPolicyCommand(EntityType entityType, EntityName entityName)
             : base(entityType, entityName)
