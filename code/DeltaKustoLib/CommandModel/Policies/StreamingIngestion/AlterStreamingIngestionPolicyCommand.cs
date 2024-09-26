@@ -16,8 +16,8 @@ namespace DeltaKustoLib.CommandModel.Policies.StreamingIngestion
         public override string CommandFriendlyName => ".alter <entity> policy streamingingestion";
 
         public override string ScriptPath => EntityType == EntityType.Database
-            ? $"tables/policies/streamingingestion/create/{EntityName}"
-            : $"databases/policies/streamingingestion/create";
+            ? $"databases/policies/streamingingestion/create/{EntityName}"
+            : $"tables/policies/streamingingestion/create//{EntityName}";
 
         public AlterStreamingIngestionPolicyCommand(
             EntityType entityType,

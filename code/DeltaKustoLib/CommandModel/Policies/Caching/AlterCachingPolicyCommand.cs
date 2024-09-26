@@ -24,8 +24,8 @@ namespace DeltaKustoLib.CommandModel.Policies.Caching
         public override string CommandFriendlyName => ".alter <entity> policy caching";
 
         public override string ScriptPath => EntityType == EntityType.Database
-            ? $"tables/policies/caching/create/{EntityName}"
-            : $"databases/policies/caching/create";
+            ? $"databases/policies/caching/create/{EntityName}"
+            : $"tables/policies/caching/create";
 
         public AlterCachingPolicyCommand(
             EntityType entityType,

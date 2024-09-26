@@ -12,8 +12,8 @@ namespace DeltaKustoLib.CommandModel.Policies.Caching
         public override string CommandFriendlyName => throw new NotImplementedException();
 
         public override string ScriptPath => EntityType == EntityType.Database
-            ? $"tables/policies/caching/delete"
-            : $"db/policies/caching/delete";
+            ? $"databases/policies/caching/delete"
+            : $"tables/policies/caching/delete";
 
         public DeleteCachingPolicyCommand(EntityType entityType, EntityName entityName)
             : base(entityType, entityName)
